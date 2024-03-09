@@ -1,16 +1,14 @@
 
 import "./page.scss"
 import type { AppProps } from 'next/app';
-import Header from './widgets/Header/Header';
-import './theme/global.scss';
-import "./theme/normalize.scss"
+import "@/app/theme/normalize.scss"
+import "@/app/theme/global.scss"
 import Head from 'next/head';
 import type { ReactNode } from 'react';
 import Table from "./components/table/table";
 interface LayoutProps {
   children: ReactNode;
 }
-
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
@@ -28,7 +26,6 @@ const Layout = ({ children }: LayoutProps) => {
         />
       </Head>
       <div>
-        {/*      <Header /> */}
         <main>{children}</main>
       </div>
     </>
@@ -47,7 +44,5 @@ function MyApp({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
 export default MyApp;
-//http://localhost:8000/api/documents/?query=env
-//http://localhost:8000/documents/1/details
+ 
