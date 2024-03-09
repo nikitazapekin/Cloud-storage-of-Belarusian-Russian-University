@@ -1,0 +1,29 @@
+.table__component {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr ;
+    overflow-y: auto;
+    row-gap: 10px;
+}
+
+.table__component__stroke {
+    display: grid;
+  //  padding: 20px;
+   grid-template-columns: repeat(12, minmax(150px, 700px));
+}
+.table__component__stroke__element{
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+.test {
+    border-bottom: 2px solid black;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

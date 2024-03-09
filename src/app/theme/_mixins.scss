@@ -1,0 +1,25 @@
+@mixin font-family($font-name) {
+	font-family: $font-name;
+}
+
+@mixin font-weight($value) {
+	font-weight: $value;
+}
+
+@mixin link($hover-color, $transition, $color) {
+	color: $color;
+
+	transition: $transition;
+
+	&:hover {
+		color: $hover-color;
+	}
+}
+
+@mixin BackgroundWhiteWithOpacity($opacity) {
+	background-color: rgba(255, 255, 255, $opacity);
+}
+
+@mixin BorderMediumGrayWithOpacity($size,$opacity) {
+	border: $size solid rgba(109, 110, 118, $opacity);
+}

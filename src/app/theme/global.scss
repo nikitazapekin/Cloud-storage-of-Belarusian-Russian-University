@@ -1,0 +1,60 @@
+@import 'theme.scss';
+
+@import url(https://fonts.googleapis.com/css?family=Sen:regular,700,800);
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900);
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/*
+html,
+body {
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 1fr;
+//	background-color: orange;
+	//background-color: red;
+	margin: 0;
+	padding: 0;
+	@include font-family($font-family-sen);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	border: none;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+.container__main {
+	margin: 0 auto;
+	max-width: 1032px;
+	background-color: rgb(133, 131, 131);
+}
+.container__content {
+	margin: 0 auto;
+	max-width: 856px;
+	background-color: rgb(97, 97, 97);
+} */
