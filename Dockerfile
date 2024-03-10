@@ -20,3 +20,4 @@ CMD docker-compose pull && docker-compose up -d
 #docker ps -a
 #docker ps
 #docker-compose up -d
+#C:\Users\wotbl\my-next-app>docker compose run --rm webserver createsuperuser

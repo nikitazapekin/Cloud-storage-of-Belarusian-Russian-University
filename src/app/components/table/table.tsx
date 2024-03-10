@@ -11,7 +11,7 @@ import { QueryClient } from "react-query";
 const fetchFiles = async () => {
   const response = await axios.get("http://localhost:8000/api/documents/", {
     headers: {
-      Authorization: "Token ea0512cf74ce9c47c4ab4309da83b470b9ef80e4",
+      Authorization: "Token ae06b795cd8db61411463088ee796afd8e392a54",
     },
   });
   return response.data;
@@ -25,7 +25,6 @@ const TableComponent = ({ port }: { port: string }) => {
     const filteredData = data?.results.filter((item: Element) => item.title === option);
     return filteredData;
   };
-
   return (
     <>
       {isLoading ? (
@@ -56,55 +55,77 @@ const TableComponent = ({ port }: { port: string }) => {
               <div className="table__component__stroke__element">Разработка программного обеспечения</div>
               <div className="table__component__stroke__element">очная</div>
               <div className="table__component__stroke__element">
-                {filterFunc("applied_math_education_links")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                {filterFunc("applied_math_education_links")?.map((item: Element, index: number) =>
+                 <div   className={`test ${index>1 ? "test_line" : ""}`}>
+                  <a
+                     className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
                 )}</div>
               <div className="table__component__stroke__element">
-                {filterFunc("applied_math_education_plan")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                {filterFunc("applied_math_education_plan")?.map((item: Element, index: number) => 
+                <div  className={`test`} 
+                >
+                  <a 
+                  className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                    {item.original_file_name} {index}
+                  </a>
+                </div>
+                )}
+              </div>
+              <div className="table__component__stroke__element">
+                {filterFunc("applied_math_working_programs")?.map((item: Element, index: number) =>
+                 <div  className={`test`}>
+                  <a
+                   className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
                 )}
               </div>
               <div className="table__component__stroke__element">
-                {filterFunc("applied_math_working_programs")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                {filterFunc("applied_math_practice")?.map((item: Element, index: number) =>
+                 <div className={`test`}>
+                  <a 
+                   className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
                 )}
               </div>
               <div className="table__component__stroke__element">
-                {filterFunc("applied_math_practice")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                {filterFunc("applied_math_calendar")?.map((item: Element, index: number) =>
+                 <div className={`test`}>
+                  <a
+                   className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
                 )}
               </div>
               <div className="table__component__stroke__element">
-                {filterFunc("applied_math_calendar")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                {filterFunc("applied_math_methods_links")?.map((item: Element, index: number) => 
+                <div className={`test`}>
+                  <a
+                   className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
                 )}
               </div>
               <div className="table__component__stroke__element">
-                {filterFunc("applied_math_methods_links")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
-                    {item.original_file_name}
-                  </a>
-                </div>
-                )}
-              </div>
-              <div className="table__component__stroke__element">
-                {filterFunc("applied_math_meth_links")?.map((item: Element) => <div className="test">
-                  <a href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                {filterFunc("applied_math_meth_links")?.map((item: Element, index: number) =>
+                 <div className={`test`}>
+                  <a 
+                   className="table__line"
+                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -117,8 +138,6 @@ const TableComponent = ({ port }: { port: string }) => {
     </>
   );
 };
-
-
 const Table = ({ port }: { port: string }) => {
   const queryClient = new QueryClient();
   return (
