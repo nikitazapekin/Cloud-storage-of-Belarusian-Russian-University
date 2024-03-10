@@ -1,22 +1,13 @@
-
 "use client"
 import { useEffect } from "react";
-import { ResultsArray, Element } from "@/app/interfaces/table";
+import {  Element } from "@/app/interfaces/table";
 import { useQuery } from "react-query";
 import "./table.scss";
-import axios from "axios";
 import Spinner from "../spinner/spinner";
 import { QueryClientProvider } from "react-query";
 import { QueryClient } from "react-query";
-const fetchFiles = async () => {
-  const response = await axios.get("http://localhost:8000/api/documents/", {
-    headers: {
-      Authorization: "Token ae06b795cd8db61411463088ee796afd8e392a54",
-    },
-  });
-  return response.data;
-};
-const TableComponent = ({ port }: { port: string }) => {
+import fetchFiles from "@/app/api";
+  const TableComponent = () => {
   const { data, isLoading, error, refetch } = useQuery("files", fetchFiles);
   useEffect(() => {
     refetch();
@@ -27,13 +18,24 @@ const TableComponent = ({ port }: { port: string }) => {
   };
   return (
     <>
+    {error ? (
+      <div className="error__box">
+      <h1 className="error__message">
+        Something went wrong...
+      </h1>
+      </div>
+    ) : (
+      <></>
+    )}
       {isLoading ? (
         <Spinner />
-      ) : error ? (
-        <div>Error fetching data</div>
-        ) : (
-          <div>
-          <div className="table__component">
+      ) :  (
+<></>
+   )}
+
+   {!isLoading && !error ? (
+
+     <div className="table__component">
             <div className="table__component__stroke">
               <div className="table__component__stroke__element">Код, шифр</div>
               <div className="table__component__stroke__element">Наименование профессии, специальности, направления подготовки, наименование группы научных специальностей</div>
@@ -59,7 +61,7 @@ const TableComponent = ({ port }: { port: string }) => {
                  <div   className={`test ${index>1 ? "test_line" : ""}`}>
                   <a
                      className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -70,7 +72,7 @@ const TableComponent = ({ port }: { port: string }) => {
                 >
                   <a 
                   className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name} {index}
                   </a>
                 </div>
@@ -81,7 +83,7 @@ const TableComponent = ({ port }: { port: string }) => {
                  <div  className={`test`}>
                   <a
                    className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -92,7 +94,7 @@ const TableComponent = ({ port }: { port: string }) => {
                  <div className={`test`}>
                   <a 
                    className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -103,7 +105,7 @@ const TableComponent = ({ port }: { port: string }) => {
                  <div className={`test`}>
                   <a
                    className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -114,7 +116,7 @@ const TableComponent = ({ port }: { port: string }) => {
                 <div className={`test`}>
                   <a
                    className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -125,7 +127,7 @@ const TableComponent = ({ port }: { port: string }) => {
                  <div className={`test`}>
                   <a 
                    className="table__line"
-                  href={`http://localhost:8000/api/documents/${item.id}/preview/`}>
+                  href={`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/documents/${item.id}/preview/`}>
                     {item.original_file_name}
                   </a>
                 </div>
@@ -133,17 +135,20 @@ const TableComponent = ({ port }: { port: string }) => {
               </div>
             </div>
           </div>
-        </div>
-      )}
+     ) : (
+
+      <></>
+     )}
     </>
   );
 };
-const Table = ({ port }: { port: string }) => {
+  const Table = () => {
   const queryClient = new QueryClient();
   return (
     <>
 <QueryClientProvider client={queryClient}>
-  <TableComponent port={port} />
+  <TableComponent 
+   />
       </QueryClientProvider>
     </>
   )

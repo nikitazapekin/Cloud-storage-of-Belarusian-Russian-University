@@ -48,3 +48,17 @@ position: relative;
     width: 100%;
     border-bottom: 3px solid black;
 }
+.error__box {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+//    background-color: orange;
+}
+.error__message {
+    font-size: 66px;
+    color: red;
+   // height: 100%;
+}

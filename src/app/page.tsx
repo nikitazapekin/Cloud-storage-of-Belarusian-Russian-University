@@ -36,9 +36,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Layout>
-        <Table port={process.env.REACT_APP ? process.env.REACT_APP : "3000"} />
         <main>
-          <script dangerouslySetInnerHTML={{ __html: `window.REACT_APP = '${process.env.REACT_APP || ""}'` }} />
+        <Table 
+        />
         </main>
       </Layout>
     </>
